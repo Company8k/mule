@@ -14,9 +14,8 @@ build:
   before_script:
     - docker login -u "gitlab-ci-token" -p "$CI_BUILD_TOKEN" $CI_REGISTRY
   script:
-    - export TAG=$(echo $CI_BUILD_REF_NAME | cut -d'-' -f1)
-    - docker build --pull -t "$CI_REGISTRY_IMAGE:$TAG" .
-    - docker push "$CI_REGISTRY_IMAGE:$TAG"
+    - docker build --pull -t "$CI_REGISTRY_IMAGE" .
+    - docker push "$CI_REGISTRY_IMAGE"
   tags:
     - docker
 
